@@ -1,4 +1,4 @@
-all:rule37 rule5 rule6
+all:rule37 rule5 rule6 rule111 rule1111
 
 .PHONY:all
 
@@ -19,6 +19,19 @@ rule6:rule6.o
 	g++ -o rule6 rule6.o
 rule6.o:rule6.c
 	g++ -c rule6.c
+
+#rule111.c一个"类需要默认构造函数，否则当它是另外类的成员变量时需要在构造函数初始化列表中提供初始化式
+rule111:rule111.o
+	g++ -o rule111 rule111.o
+rule111.o:rule111.c
+	g++ -c rule111.c
+
+#成员变量为类类型时会调用默认构造函数，为指针时不会
+rule1111:rule1111.o
+	g++ -o rule1111 rule1111.o
+rule1111.o:rule1111.c
+	g++ -c rule1111.c
+
 
 .PHONY:clean
 clean:
