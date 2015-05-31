@@ -1,4 +1,5 @@
-all:rule37 rule5 rule6 rule111 rule1111
+all:rule37 rule5 rule6 rule111 rule1111 rule41 rule49 \
+		rule51
 
 .PHONY:all
 
@@ -32,9 +33,29 @@ rule1111:rule1111.o
 rule1111.o:rule1111.c
 	g++ -c rule1111.c
 
+#rule41.c重载函数调用操作符
+rule41:rule41.o
+	g++ -o rule41 rule41.o
+rule41.o:rule41.c
+	g++ -c rule41.c
+
+#rule49.c替换new中内存不足时的处理函数
+rule49:rule49.o
+	g++ -o rule49 rule49.o
+rule49.o:rule49.c
+	g++ -c rule49.c
+
+#rule51.c:重载类内的operator new 和operator delete操作符
+rule51:rule51.o
+	g++ -o rule51 rule51.o
+rule51.o:rule51.c
+	g++ -c rule51.c
+
+
+
 
 .PHONY:clean
 clean:
-	del *.o *~ *.swp *.s
+	del *.o *~ *.swp *.s .*.swp
 cleanAll:
-	del *.o *~ *.swp *.s *.exe
+	del *.o *~ *.swp *.s *.exe .*.swp
